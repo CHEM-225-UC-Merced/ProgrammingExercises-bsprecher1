@@ -18,9 +18,10 @@ jobs:
           sudo apt-get install -y gfortran perl
 
       - name: Compile Fortran program
-        run: gfortran -o prgm_01_01.exe prgm_01_01.f03
-        run: gfortran -o prgm_01_02.exe prgm_01_02.f03
-        run: gfortran -o prgm_01_03.exe prgm_01_03.f03
+        run: |
+          gfortran -o prgm_01_01.exe prgm_01_01.f03
+          gfortran -o prgm_01_02.exe prgm_01_02.f03
+          gfortran -o prgm_01_03.exe prgm_01_03.f03
 
       - name: Run test script
         run: perl testCode.pl
