@@ -1,0 +1,22 @@
+-----------------------------
+Programming Exercise 1
+-----------------------------
+This assignment is worth 100 points. 10 points are awarded for successfully
+submitting the assignment on time using a Pull Request on GitHub. 20 points
+are awarded for each program (60 total points possible) that successfully
+compiles and can be executed. 10 points are awarded for successful and
+correct outputs for each program (30 total points possible).
+
+(-5 points) x 3 = -15 points
+The programs all compile and can execute. In all cases, the output produced
+gives the traspose of the expected output.
+
+-----------------------------
+Programming Exercise 2
+-----------------------------
+This assignment is worth 100 points. 10 points are awarded for successfully
+submitting the assignment on time using a Pull Request on GitHub. 20 points
+are awarded for each program (60 total points possible) that successfully
+compiles and can be executed. 10 points are awarded for successful and
+correct outputs for each program (30 total points possible).
+
