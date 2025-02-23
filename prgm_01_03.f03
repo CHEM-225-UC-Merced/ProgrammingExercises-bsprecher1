@@ -1,20 +1,22 @@
-      Program prgm_01_01
+      Program prgm_01_03
 !
 !     This program reads a 3x3 matrix from a user-provided input file. After the
 !     file is opened and read, it is closed and then printed.
 !
 !
       implicit none
-      integer,parameter::inFileUnitA=10
+      integer,parameter::inFileUnitA=10,inFileUnitB=11
       integer::errorFlag,i
-      real,dimension(3,3)::matrixInA
-      character(len=128)::fileNameA
+      real,dimension(3,3)::matrixInA,matrixInB,matrixProduct
+      character(len=128)::fileNameA,fileNameB
 !
 !
 !     Start by asking the user for the name of the data file.
 !
-      write(*,*)' What is the name of the input data file?'
+      write(*,*)' What is the name of the first input data file?'
       read(*,*) fileNameA
+      write(*,*)' What is the name of the second input data file?'
+      read(*,*) fileNameB
 !
 !     Open the data file and read matrixInA from that file.
 !
@@ -33,8 +35,24 @@
 !
       call PrintMatrix3x3(matrixInA)
 !
+      open(unit=inFileUnitB,file=TRIM(fileNameB),status='old',  &
+        iostat=errorFlag)
+      if(errorFlag.ne.0) then
+        write(*,*)' There was a problem opening the input file.'
+        goto 999
+      endIf
+      do i = 1,3
+        read(inFileUnitB,*) matrixInB(1,i),matrixInB(2,i),matrixInB(3,i)
+      endDo
+      close(inFileUnitB)
+
+      call PrintMatrix3x3(matrixInB)
+
+      matrixProduct = MatMul(matrixInA,matrixInB)
+      call PrintMatrix3x3(matrixProduct)
+
   999 continue
-      End Program prgm_01_01
+      End Program prgm_01_03
 
 
       Subroutine PrintMatrix3x3(matrix)
@@ -54,9 +72,8 @@
       write(*,*)' Printing Matrix'
 !
 !      ADD CODE HERE
-!      print 1000, matrix
-      write(*,1000) matrix
-!      write(unit#,formatnumber,matrix)
+      print 1000, matrix
+!      write(matrix,1000)
 !
 !
       return
