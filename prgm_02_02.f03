@@ -66,7 +66,7 @@
 !
 !
 ! *************************************************************************
-! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
+! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
 !
@@ -93,7 +93,7 @@
 !
 !
 ! *************************************************************************
-! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
+! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
 !

@@ -12,7 +12,7 @@
 !
 !
       Implicit None
-      Integer::IIn,IError,NDim,i,j
+      Integer::IIn=10,IError,NDim,i,j
       Real,Dimension(:),Allocatable::Array_Input,EVals,Temp_Vector
       Real,Dimension(:,:),Allocatable::Matrix,EVecs,Temp_Matrix
       Character(Len=256)::FileName
