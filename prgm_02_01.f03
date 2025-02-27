@@ -33,6 +33,9 @@
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
+      Do i = 1, NDim*NDim
+         Read(IIn,*) Array_Input(i)
+      End Do
 !
 !     Convert Array_Input to Matrix and print the matrix.
 !
@@ -70,6 +73,13 @@
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
+      k = 1
+      Do j = 1, N
+         Do i = 1, M
+            AMatOut(i,j) = ArrayIn(k)
+            k = k + 1
+         End Do
+      End Do
 !
       Return
       End Subroutine Packed2Matrix_ColumnWise
@@ -97,6 +107,29 @@
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
+      k = 1
+      Do i = 1, M
+         Do j = 1, N
+            AMatOut(i,j) = ArrayIn(k)
+            k = k + 1
+         End Do
+      End Do
 !
       Return
       End Subroutine Packed2Matrix_RowWise
+!
+      Subroutine Print_Matrix_Full_Real(AMat, M, N)
+!
+      Implicit None
+      Integer, Intent(In) :: M, N
+      Real, Dimension(M,N), Intent(In) :: AMat
+      Integer :: i, j
+
+
+      Write(*, '(1X, 100I10)') (j, j = 1, N)
+      Do i = 1, M
+         Write(*, '(I4,100F10.6)') i, (AMat(i, j), j = 1, N)
+      End Do
+
+      Return
+      End Subroutine Print_Matrix_Full_Real
