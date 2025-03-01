@@ -20,9 +20,12 @@ jobs:
 
       - name: Compile Fortran program
         run: |
-          gfortran -o prgm_01_01.exe prgm_01_01.f03
-          gfortran -o prgm_01_02.exe prgm_01_02.f03
-          gfortran -o prgm_01_03.exe prgm_01_03.f03
+#          gfortran -o prgm_01_01.exe prgm_01_01.f03
+#          gfortran -o prgm_01_02.exe prgm_01_02.f03
+#          gfortran -o prgm_01_03.exe prgm_01_03.f03
+          gfortran -o prgm_02_01.exe prgm_02_01.f03
+          gfortran -o prgm_02_02.exe prgm_02_02.f03
+          gfortran -o prgm_02_03.exe prgm_02_03.f03
 
       - name: Run test script
         run: perl testCode.pl
