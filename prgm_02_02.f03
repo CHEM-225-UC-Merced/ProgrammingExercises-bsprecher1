@@ -34,6 +34,9 @@
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
+      Do i = 1, (NDim*(NDim+1))/2
+         Read(IIn,*) Array_Input(i)
+      End Do
 !
 !     Convert Array_Input to Matrix and print the matrix.
 !
@@ -69,6 +72,14 @@
 ! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
+      k = 1
+      Do j = 1, N
+         Do i = j, N
+            AMatOut(i,j) = ArrayIn(k)
+            AMatOut(j,i) = ArrayIn(k)
+            k = k + 1
+         End Do
+      End Do
 !
       Return
       End Subroutine SymmetricPacked2Matrix_LowerPac
@@ -96,6 +107,30 @@
 ! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
+      k = 1
+      Do j = 1, N
+         Do i = 1, j
+            AMatOut(i,j) = ArrayIn(k)
+            AMatOut(j,i) = ArrayIn(k) ! Symmetric assignment
+            k = k + 1
+         End Do
+      End Do
 !
       Return
       End Subroutine SymmetricPacked2Matrix_UpperPac
+
+      Subroutine Print_Matrix_Full_Real(AMat, M, N)
+!
+      Implicit None
+      Integer, Intent(In) :: M, N
+      Real, Dimension(M,N), Intent(In) :: AMat
+      Integer :: i, j
+
+
+      Write(*, '(1X, 100I10)') (j, j = 1, N)
+      Do i = 1, M
+         Write(*, '(I4,100F10.6)') i, (AMat(i, j), j = 1, N)
+      End Do
+
+      Return
+      End Subroutine Print_Matrix_Full_Real

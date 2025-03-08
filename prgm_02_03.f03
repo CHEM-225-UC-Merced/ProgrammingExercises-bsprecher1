@@ -35,6 +35,9 @@
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
+      Do i = 1, (NDim*(NDim+1))/2
+         Read(IIn,*) Array_Input(i)
+      End Do
       Close(Unit=IIn)
 !
 !     Convert Array_Input to Matrix and print the matrix.
@@ -54,3 +57,52 @@
       Call Print_Matrix_Full_Real(EVecs,NDim,NDim)
 !
       End Program prgm_02_03
+
+      Subroutine SymmetricPacked2Matrix_LowerPac(N,ArrayIn,AMatOut)
+!
+!     This subroutine accepts an array, ArrayIn, that is (N*(N+1))/2 long.
+!     It then converts that form to the N-by-N matrix AMatOut taking
+!     ArrayIn to be in lower-packed storage form. Note: The storage mode
+!     also assumes the lower-packed storage is packed by columns.
+!
+      Implicit None
+      Integer,Intent(In)::N
+      Real,Dimension((N*(N+1))/2),Intent(In)::ArrayIn
+      Real,Dimension(N,N),Intent(Out)::AMatOut
+!
+      Integer::i,j,k
+!
+!     Loop through the elements of AMatOut and fill them appropriately from
+!     Array_Input.
+!
+!
+! *************************************************************************
+! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
+! *************************************************************************
+!
+      k = 1
+      Do j = 1, N
+         Do i = j, N
+            AMatOut(i,j) = ArrayIn(k)
+            AMatOut(j,i) = ArrayIn(k)
+            k = k + 1
+         End Do
+      End Do
+!
+      Return
+      End Subroutine SymmetricPacked2Matrix_LowerPac
+      Subroutine Print_Matrix_Full_Real(AMat, M, N)
+!
+      Implicit None
+      Integer, Intent(In) :: M, N
+      Real, Dimension(M,N), Intent(In) :: AMat
+      Integer :: i, j
+
+
+      Write(*, '(1X, 100I10)') (j, j = 1, N)
+      Do i = 1, M
+         Write(*, '(I4,100F10.6)') i, (AMat(i, j), j = 1, N)
+      End Do
+
+      Return
+      End Subroutine Print_Matrix_Full_Real
